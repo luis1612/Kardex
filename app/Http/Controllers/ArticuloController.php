@@ -58,15 +58,16 @@ class ArticuloController extends Controller
    	//Creando y guardando un nuevo registros en a tabla Articulo
    	//Los valores dentro del get('x') son los objetos que se encuentran en el formulario HTML
 		$articulo = new Articulo;
-      $articulo -> idcategoria =$request -> get('idcategoria');
+       $articulo -> idcategoria=$request -> get('idcategoria'); 
       $articulo -> nombre = $request -> get('nombre');
       $articulo -> codigo = $request -> get('codigo');
       $articulo -> contenido = $request -> get('contenido');
       $articulo -> bodega = $request -> get('bodega');
-      $articulo -> stock  = $request -> get('stock');
+
+      $articulo -> stock = $request -> get('stock');
       $articulo -> descripcion = $request -> get('descripcion');
       $articulo -> estado = 'Activo';
-
+      
 		if(Input::hasFile('imagen'))
 		{
 			$file=Input::file('imagen');
@@ -91,12 +92,14 @@ class ArticuloController extends Controller
    		return view('almacen.articulo.edit',["articulo"=>$articulo,"categorias"=>$categorias]);
    }
    public function update(ArticuloFormRequest $request, $id)
-   {$articulo = Articulo::findOrFail($id);
+   {
+      $articulo = Articulo::findOrFail($id);
       $articulo -> idcategoria=$request -> get('idcategoria'); 
       $articulo -> nombre = $request -> get('nombre');
       $articulo -> codigo = $request -> get('codigo');
       $articulo -> contenido = $request -> get('contenido');
       $articulo -> bodega = $request -> get('bodega');
+
       $articulo -> stock = $request -> get('stock');
       $articulo -> descripcion = $request -> get('descripcion');
       $articulo -> estado = 'Activo';
@@ -122,29 +125,4 @@ class ArticuloController extends Controller
    		return \Redirect::to('almacen/articulo');
    }
 
-
-     public function excel()
-    {        
-        /**
-         * toma en cuenta que para ver los mismos 
-         * datos debemos hacer la misma consulta
-        **/
-        Excel::create('articulos.excel', function($excel) {
-            $excel->sheet('articulos.excel', function($sheet) {
-                //otra opción -> $products = Product::select('name')->get();
-               $articulo = new Articulo;
-               $articulo -> idcategoria =$request -> get('idcategoria');
-               $articulo -> nombre = $request -> get('nombre');
-               $articulo -> codigo = $request -> get('codigo');
-               $articulo -> contenido = $request -> get('contenido');
-               $articulo -> bodega = $request -> get('bodega');
-               $articulo -> stock  = $request -> get('stock');
-               $articulo -> descripcion = $request -> get('descripcion');
-               $articulo -> estado = 'Activo'; 
-
-               $sheet->fromArray($articulos);
-               $sheet->setOrientation('landscape');
-            });
-        })->export('xls');
-    }
 }
