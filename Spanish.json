@@ -1,0 +1,35 @@
+/ **
+ * Traducción Española
+ * @name español
+ * @anchor español
+ * @autor Giovanni Ariza, Aristóbulo Gómez y Roberto Poo
+ * /
+
+{
+	"sProcessing": "Procesando ...",
+                "sLengthMenu": "Mostrar _MENU_ registros",
+                "sZeroRecords": "No se encontraron resultados",
+                "tabla vacía": "Ningún dato disponible en esta tabla = (",
+                "sInfo": "Se muestran registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                "sInfoEmpty": "Se muestran registros del 0 al 0 de un total de 0 registros",
+                "sInfoFiltered": "(filtrado de un total de _MAX_ registros)",
+                "sInfoPostFix": "",
+                "sSearch": "Buscar:",
+                "sUrl": "",
+                "sInfoThousands": ",",
+                "sLoadingRecords": "Cargando ...",
+                "oPaginate": {
+                    "sFirst": "Primero",
+                    "Último": "Último",
+                    "sSiguiente": "Siguiente",
+                    "sPrevious": "Anterior"
+                }
+                "oAria": {
+                    "sSortAscending": ": Activar para ordenar la columna de manera ascendente",
+                    "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                }
+                "botones": {
+                    "copia": "copiar",
+                    "colvis": "visibilidad"
+                }
+}
