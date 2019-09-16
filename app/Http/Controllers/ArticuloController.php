@@ -59,10 +59,10 @@ class ArticuloController extends Controller
    	//Los valores dentro del get('x') son los objetos que se encuentran en el formulario HTML
 		$articulo = new Articulo;
       $articulo -> idcategoria =$request -> get('idcategoria');
+      $articulo -> nombre = $request -> get('nombre');
       $articulo -> codigo = $request -> get('codigo');
       $articulo -> contenido = $request -> get('contenido');
       $articulo -> bodega = $request -> get('bodega');
-      $articulo -> nombre = $request -> get('nombre');
       $articulo -> stock  = $request -> get('stock');
       $articulo -> descripcion = $request -> get('descripcion');
       $articulo -> estado = 'Activo';
@@ -92,11 +92,11 @@ class ArticuloController extends Controller
    }
    public function update(ArticuloFormRequest $request, $id)
    {$articulo = Articulo::findOrFail($id);
-      $articulo -> idcategoria=$request -> get('idcategoria');
+      $articulo -> idcategoria=$request -> get('idcategoria'); 
+      $articulo -> nombre = $request -> get('nombre');
       $articulo -> codigo = $request -> get('codigo');
       $articulo -> contenido = $request -> get('contenido');
       $articulo -> bodega = $request -> get('bodega');
-      $articulo -> nombre = $request -> get('nombre');
       $articulo -> stock = $request -> get('stock');
       $articulo -> descripcion = $request -> get('descripcion');
       $articulo -> estado = 'Activo';
@@ -134,10 +134,10 @@ class ArticuloController extends Controller
                 //otra opción -> $products = Product::select('name')->get();
                $articulo = new Articulo;
                $articulo -> idcategoria =$request -> get('idcategoria');
+               $articulo -> nombre = $request -> get('nombre');
                $articulo -> codigo = $request -> get('codigo');
                $articulo -> contenido = $request -> get('contenido');
                $articulo -> bodega = $request -> get('bodega');
-               $articulo -> nombre = $request -> get('nombre');
                $articulo -> stock  = $request -> get('stock');
                $articulo -> descripcion = $request -> get('descripcion');
                $articulo -> estado = 'Activo'; 
