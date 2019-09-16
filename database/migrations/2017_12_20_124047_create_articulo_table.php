@@ -18,12 +18,12 @@ class CreateArticuloTable extends Migration
 
             //unsigned() no permite num negativos
             $table->integer('idcategoria')->unsigned();
-            $table->string('codigo', 128)->nullable(); 
-            $table->string('contenido', 128);
-            $table->string('bodega', 128);
-            $table->string('nombre', 128);
-             $table->decimal('stock', 11,2);
-            $table->text('descripcion');
+            $table->string('nombre', 50);
+            $table->text('codigo')->nullable(); 
+            $table->text('contenido')->nullable();
+            $table->text('bodega');
+            $table->decimal('stock', 11,2);
+            $table->string('descripcion',128)->nullable();
             $table->string('imagen', 128)->nullable();
             $table->string('estado', 50)->nullable();
 
