@@ -34,14 +34,10 @@ class ArticuloController extends Controller
    			$articulos =DB::table('articulo as a')
    				->join('categoria as c', 'a.idcategoria','=','c.idcategoria')
    				-> select('a.idarticulo', 'a.nombre', 'a.codigo', 'a.contenido', 'a.bodega', 'a.stock', 'c.nombre as categoria', 'a.descripcion', 'a.imagen', 'a.estado')
-   				-> where('a.nombre','LIKE','%'.$query.'%')
-          -> orwhere('a.codigo','LIKE','%'.$query.'%')
-          -> orwhere('a.contenido','LIKE','%'.$query.'%')
-          -> orwhere('a.stock','LIKE','%'.$query.'%')
-          -> orwhere('a.bodega','LIKE','%'.$query.'%')
-          -> orwhere('c.nombre','LIKE','%'.$query.'%')
+   				->where('a.nombre','LIKE','%'.$query.'%')
+          ->orwhere('a.codigo','LIKE','%'.$query.'%')
    				->orderBy('idarticulo')
-   				->paginate(1000);
+   				->paginate(100);
 
    			//    Vista(Carpeta/Controlador/Pagina, Parametros que se le envia a la vista)
    			return view('almacen.articulo.index',["articulos"=>$articulos,"searchText"=>$query]);
@@ -67,7 +63,7 @@ class ArticuloController extends Controller
       $articulo -> stock = $request -> get('stock');
       $articulo -> descripcion = $request -> get('descripcion');
       $articulo -> estado = 'Activo';
-      
+
 		if(Input::hasFile('imagen'))
 		{
 			$file=Input::file('imagen');
